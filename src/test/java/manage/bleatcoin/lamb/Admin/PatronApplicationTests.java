@@ -30,21 +30,24 @@ public class PatronApplicationTests {
     IPatronRepository patronRepo;
 
     private Patron p1 = new Patron();
-    p1.setId(1);
-    p1.setUsername("abc");
-    p1.setCoins(10);
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
 
     @Test
-    public void getAllUsersInDb(){
+    public void getAllUsersInDb() {
+        p1.setId(1);
+        p1.setUsername("abc");
+        p1.setCoins(10);
         when(patronRepo.findAll()).thenReturn(new ArrayList<>(Arrays.asList(p1)));
         Assert.assertEquals(new ArrayList<>(Arrays.asList(p1)), controller.getAll());
     }
 
     @Test
     public void getUserByIdWhenNullUserInDb() {
+        p1.setId(1);
+        p1.setUsername("abc");
+        p1.setCoins(10);
         int TEST_ID = 0;
         when(patronRepo.findById(TEST_ID)).thenReturn(Optional.empty());
         Assert.assertEquals(new Response(true, "No patron with given ID: " + Integer.toString(TEST_ID)), controller.getUserById(TEST_ID));
@@ -52,6 +55,9 @@ public class PatronApplicationTests {
 
     @Test
     public void getUserByIdWhenUserInDb() {
+        p1.setId(1);
+        p1.setUsername("abc");
+        p1.setCoins(10);
         int TEST_ID = 1;
         when(patronRepo.findById(TEST_ID)).thenReturn(Optional.of(p1));
         Assert.assertEquals(p1, controller.getUserById(TEST_ID));
