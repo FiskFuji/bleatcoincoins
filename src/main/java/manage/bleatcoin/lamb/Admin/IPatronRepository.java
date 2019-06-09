@@ -8,4 +8,4 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface IPatronRepository extends MongoRepository<Patron, int> { }
+public interface IPatronRepository extends MongoRepository<Patron, Integer> { }
