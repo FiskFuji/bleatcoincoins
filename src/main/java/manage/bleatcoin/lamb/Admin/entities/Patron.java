@@ -43,10 +43,10 @@ public class Patron {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(getId(), user.getId()) &&
-				Objects.equals(getCoins(), user.getCoins()) &&
-                Objects.equals(getUsername(), user.getUsername());
+        Patron p = (Patron) o;
+        return Objects.equals(getId(), p.getId()) &&
+				Objects.equals(getCoins(), p.getCoins()) &&
+                Objects.equals(getUsername(), p.getUsername());
     }
 
     @Override
