@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
  
 import manage.bleatcoin.lamb.Admin.entites.Patron;
+import manage.bleatcoin.lamb.Admin.IPatronRepository;
 import manage.bleatcoin.lamb.Admin.PatronService;
  
 @Service
