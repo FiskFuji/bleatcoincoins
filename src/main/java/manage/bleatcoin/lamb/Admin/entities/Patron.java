@@ -13,7 +13,7 @@ public class Patron {
     private String username;
 	private int coins;
 
-    public User() { }
+    public Patron() { }
 
     public int getId() {
         return id;
