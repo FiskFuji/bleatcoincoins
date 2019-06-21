@@ -10,6 +10,8 @@ public class Patron {
     @Id
     private int id;
     private String username;
+    private String realname;
+    private String tier;
 	private int coins;
 
     public Patron() { }
@@ -38,26 +40,46 @@ public class Patron {
         this.username = username;
     }
 
+    public String getRealname() {
+        return realname;
+    }
+
+    public void setRealname(String realname) {
+        this.realname = realname;
+    }
+
+    public String getTier() {
+        return tier;
+    }
+
+    public void setTier(String tier) {
+        this.tier = tier;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Patron p = (Patron) o;
         return Objects.equals(getId(), p.getId()) &&
-				Objects.equals(getCoins(), p.getCoins()) &&
+                Objects.equals(getCoins(), p.getCoins()) &&
+                Objects.equals(getRealname(), p.getRealname()) &&
+                Objects.equals(getTier(), p.getTier()) &&
                 Objects.equals(getUsername(), p.getUsername());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getCoins(), getUsername());
+        return Objects.hash(getId(), getCoins(),  getRealname(), getTier(), getUsername());
     }
 
     @Override
     public String toString() {
         return "Patron {" +
                 "id='" + id + '\'' +
-                "username='" + username + '\'' +
+                ", username='" + username + '\'' +
+                ", realname='" + realname + '\'' +
+                ", tier='" + tier + '\'' +
 				", coins='" + Integer.toString(coins) + '\'' +
                 '}';
     }

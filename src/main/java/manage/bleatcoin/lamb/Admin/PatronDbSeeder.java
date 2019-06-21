@@ -17,6 +17,15 @@ public class PatronDbSeeder implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // --- Database seeding complete. Do nothing. ---
+        Patron testP = new Patron();
+        testP.setId(0);
+        testP.setCoins(10);
+        testP.setUsername("Tycho");
+        testP.setRealname("Fisk");
+        testP.setTier("Mantid");
+
+        serv.deleteAllPatrons();
+        List<Patron> patrons = Arrays.asList(testP);
+        serv.createPatron(patrons);
     }
 }

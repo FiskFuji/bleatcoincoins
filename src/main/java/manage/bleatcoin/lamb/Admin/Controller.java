@@ -17,17 +17,20 @@ public class Controller {
     @Autowired
     PatronService serv;
 
+    @CrossOrigin
     @PostMapping(value="/create")
     public Object create(@RequestBody List<Patron> p) {
         serv.createPatron(p);
         return new Response(false, "New patron created.");
     }
 
-    @GetMapping(value="/allPatrons")
+    @CrossOrigin
+    @PostMapping(value="/allPatrons")
     public Collection<Patron> getAll() {
         return serv.getAllPatrons();
     }
 
+    @CrossOrigin
     @GetMapping("/getById/{p-id}")
     public Object getPatronById(@PathVariable(value="p-id") int id) {
         Optional<Patron> patron = serv.findPatronById(id);
@@ -36,6 +39,7 @@ public class Controller {
         return patron;
     }
 
+    @CrossOrigin
     @PutMapping(value="/update/{p-id}")
     public Object update(@PathVariable(value="p-id") int id, @RequestBody Patron p) {
         p.setId(id);
@@ -47,6 +51,7 @@ public class Controller {
         return new Response(false, "Patron with ID " + Integer.toString(id) + " record updated.");
     }
 
+    @CrossOrigin
     @DeleteMapping(value="/delete/{p-id}")
     public Object delete(@PathVariable(value="p-id") int id) {
         Optional<Patron> patron = serv.findPatronById(id);
@@ -55,11 +60,5 @@ public class Controller {
         }
         serv.deletePatronById(id);
         return new Response(false, "Patron with ID " + Integer.toString(id) + " record deleted.");
-    }
-
-    @DeleteMapping(value="/pleaseDeleteAll")
-    public Object deleteAll() {
-        serv.deleteAllPatrons();
-        return new Response(false, "All patrons deleted from the database. I hope you meant to do that.");
     }
 }
